@@ -11,6 +11,20 @@ A Django website for Cloud Café, a neighborhood coffee shop in Makati City, Phi
 
 ---
 
+## AI Chat Widget Preview
+
+The chat widget appears as a floating button on every page. Clicking it opens the **Brew** assistant, which can answer questions about the menu, the café, and its policies in real time.
+
+![Cloud Cafe PH chat widget showing Brew assistant answering a menu question](docs/chat-preview.png)
+
+> **Example interaction:**
+> - **Customer:** Which is the least expensive beverage?
+> - **Brew:** The least expensive beverage on the Cloud Café Menu is Iced Tea at ₱110.
+
+Brew is powered by Amazon Bedrock Nova Lite and retrieves answers exclusively from the café's own documents — it will not answer questions outside that scope.
+
+---
+
 ## AI Integration
 
 This project integrates with **[Xeunt/enterprise-ai-agent](https://github.com/Xeunt/enterprise-ai-agent)** — an AWS serverless backend built with Lambda, API Gateway, S3, and Amazon Bedrock Nova Lite.
