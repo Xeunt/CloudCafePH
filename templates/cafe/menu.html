@@ -12,9 +12,9 @@
     <p>Freshly prepared drinks available in regular and large sizes.</p>
   </section>
 
-  <!-- SIZE NOTE -->
+  <!-- SIZE NOTE (drinks only) -->
   <div style="background: var(--cream-dark); text-align: center; padding: 0.85rem 2rem; font-size: 0.95rem; color: var(--text-mid);">
-    ☕ All drinks available in <strong>Regular</strong> or <strong>Large</strong> — large size adds <strong>₱30</strong>.
+    ☕ All <strong>drinks</strong> available in <strong>Regular</strong> or <strong>Large</strong> — large size adds <strong>₱30</strong>.
   </div>
 
   <!-- MENU ITEMS -->
@@ -39,7 +39,11 @@
                       {% if item.description %}
                         <p>{{ item.description }}</p>
                       {% endif %}
-                      <span class="price-tag">₱{{ item.price }} <span style="font-weight:400; font-size:0.82rem; color: var(--text-mid);">/ regular</span></span>
+                      {% if category.order <= 2 %}
+                        <span class="price-tag">₱{{ item.price }} <span style="font-weight:400; font-size:0.82rem; color: var(--text-mid);">/ regular</span></span>
+                      {% else %}
+                        <span class="price-tag">₱{{ item.price }}</span>
+                      {% endif %}
                     </div>
                   </article>
                 {% endif %}
