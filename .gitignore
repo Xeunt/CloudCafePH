@@ -22,9 +22,10 @@ env/
 
 # Environment variables
 .env
-.env.*
+.env.local
+.env.*.local
 
-# Static files (collected)
+# Static files (collected by collectstatic — built at deploy time)
 staticfiles/
 
 # OS
