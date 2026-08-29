@@ -2,15 +2,20 @@
 {% load static %}
 
 {% block title %}Menu — Cloud Cafe PH{% endblock %}
-{% block meta_description %}Browse the full Cloud Cafe PH menu — coffees, drinks, pastries, and more.{% endblock %}
+{% block meta_description %}Browse the full Cloud Cafe PH menu — coffee, tea, and other drinks. Available in regular and large sizes.{% endblock %}
 
 {% block content %}
 
   <!-- PAGE HEADER -->
   <section class="about-hero" aria-labelledby="menu-heading">
     <h1 id="menu-heading">Our Menu</h1>
-    <p>Everything we serve is made with love and the freshest ingredients.</p>
+    <p>Freshly prepared drinks available in regular and large sizes.</p>
   </section>
+
+  <!-- SIZE NOTE -->
+  <div style="background: var(--cream-dark); text-align: center; padding: 0.85rem 2rem; font-size: 0.95rem; color: var(--text-mid);">
+    ☕ All drinks available in <strong>Regular</strong> or <strong>Large</strong> — large size adds <strong>₱30</strong>.
+  </div>
 
   <!-- MENU ITEMS -->
   <section class="menu-page" aria-label="Menu categories">
@@ -34,7 +39,7 @@
                       {% if item.description %}
                         <p>{{ item.description }}</p>
                       {% endif %}
-                      <span class="price-tag">₱{{ item.price }}</span>
+                      <span class="price-tag">₱{{ item.price }} <span style="font-weight:400; font-size:0.82rem; color: var(--text-mid);">/ regular</span></span>
                     </div>
                   </article>
                 {% endif %}
@@ -56,8 +61,8 @@
   <!-- CTA BANNER -->
   <section class="cta-banner" aria-labelledby="menu-cta-heading">
     <h2 id="menu-cta-heading">Can't Decide?</h2>
-    <p>Visit us and our baristas will help you find the perfect drink.</p>
-    <a href="{% url 'cafe:about' %}" class="btn btn-outline">Get in Touch</a>
+    <p>Visit us in Makati City and we'll help you find the perfect drink.</p>
+    <a href="{% url 'cafe:about' %}" class="btn btn-outline">Find Us</a>
   </section>
 
 {% endblock %}
