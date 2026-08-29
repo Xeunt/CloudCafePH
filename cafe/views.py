@@ -5,11 +5,13 @@ import urllib.error
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 
 from .models import MenuCategory, MenuItem
 
 
+@ensure_csrf_cookie
 def home(request):
     featured_items = MenuItem.objects.filter(is_featured=True, is_available=True)[:6]
     return render(request, 'cafe/home.html', {'featured_items': featured_items})

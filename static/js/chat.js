@@ -25,6 +25,9 @@
 
   // ── CSRF token (required by Django's CsrfViewMiddleware) ──────────
   function getCsrfToken() {
+    // Prefer the token injected directly from the Django template (most reliable)
+    if (typeof CSRF_TOKEN !== 'undefined' && CSRF_TOKEN) return CSRF_TOKEN;
+    // Fallback: read from cookie
     const match = document.cookie.match(/csrftoken=([^;]+)/);
     return match ? match[1] : '';
   }

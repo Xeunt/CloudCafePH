@@ -8,10 +8,10 @@ from dotenv import load_dotenv
 import dj_database_url
 import os
 
-# Load .env for local development (ignored in production)
-load_dotenv()
-
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load .env for local development — explicit path so it works in any terminal
+load_dotenv(BASE_DIR / '.env')
 
 # ------------------------------------------------------------------
 # SECURITY
