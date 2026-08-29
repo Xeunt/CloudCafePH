@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us — Cloud Cafe PH{% endblock %}
+{% block meta_description %}Learn the story behind Cloud Cafe PH — our mission, values, and team.{% endblock %}
+
+{% block content %}
+
+  <!-- PAGE HEADER -->
+  <section class="about-hero" aria-labelledby="about-heading">
+    <h1 id="about-heading">About Cloud Cafe PH</h1>
+    <p>A little café with a big heart — brewed with passion since day one.</p>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="about-story" aria-labelledby="story-heading">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 id="story-heading">Our Story</h2>
+          <p>Cloud Cafe PH was born from a simple idea: that great coffee and genuine hospitality can turn any ordinary day into something special.</p>
+          <p>We started as a small neighborhood spot with a passion for exceptional coffee and a love for community. Over time, that passion grew — and so did our family of regulars, friends, and first-time visitors who kept coming back for more.</p>
+          <p>Every cup we serve carries that original spirit: quality ingredients, skillful preparation, and a warm welcome that makes you feel right at home.</p>
+        </div>
+        <div class="about-image-block" aria-hidden="true">
+          ☕
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR VALUES -->
+  <section class="bg-cream-dark" aria-labelledby="values-heading">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 id="values-heading">What We Stand For</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p>Our values guide everything we do — from sourcing beans to serving smiles.</p>
+      </div>
+      <div class="values-grid">
+        <article class="value-card">
+          <div class="icon" aria-hidden="true">🌱</div>
+          <h3>Quality First</h3>
+          <p>We never cut corners. Every ingredient is chosen for its freshness and quality.</p>
+        </article>
+        <article class="value-card">
+          <div class="icon" aria-hidden="true">🤝</div>
+          <h3>Community</h3>
+          <p>We're more than a café — we're a gathering place for the people in our neighborhood.</p>
+        </article>
+        <article class="value-card">
+          <div class="icon" aria-hidden="true">♻️</div>
+          <h3>Sustainability</h3>
+          <p>We do our part — using eco-friendly packaging and supporting local farmers.</p>
+        </article>
+        <article class="value-card">
+          <div class="icon" aria-hidden="true">💛</div>
+          <h3>Warmth</h3>
+          <p>Every guest is welcomed like a regular. That's the Cloud Cafe experience.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT INFO -->
+  <section class="bg-white" aria-labelledby="visit-heading">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 id="visit-heading">Come Visit Us</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p>We'd love to see you. Here's everything you need to find us.</p>
+      </div>
+      <div class="info-cards">
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">📍</div>
+          <h3>Location</h3>
+          <p>Cloud Cafe PH<br>Philippines</p>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">🕐</div>
+          <h3>Hours</h3>
+          <p>Mon – Fri: 7am – 9pm<br>Sat – Sun: 8am – 10pm</p>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">📞</div>
+          <h3>Phone</h3>
+          <p>+63 900 000 0000</p>
+        </article>
+        <article class="info-card">
+          <div class="icon" aria-hidden="true">✉️</div>
+          <h3>Email</h3>
+          <p>hello@cloudcafeph.com</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner" aria-labelledby="about-cta-heading">
+    <h2 id="about-cta-heading">Ready to Try Our Coffee?</h2>
+    <p>Browse our full menu and see what we've been brewing.</p>
+    <a href="{% url 'cafe:menu' %}" class="btn btn-primary">View Our Menu</a>
+  </section>
+
+{% endblock %}

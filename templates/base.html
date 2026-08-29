@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Cloud Cafe PH{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Cloud Cafe PH — Your cozy neighborhood café in the Philippines.{% endblock %}" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="{% url 'cafe:home' %}" class="navbar-brand" aria-label="Cloud Cafe PH Home">
+        <span class="logo-icon" aria-hidden="true">☕</span>
+        Cloud Cafe PH
+      </a>
+      <ul class="navbar-nav" role="list">
+        <li><a href="{% url 'cafe:home' %}"  {% if request.resolver_match.url_name == 'home'  %}class="active" aria-current="page"{% endif %}>Home</a></li>
+        <li><a href="{% url 'cafe:menu' %}"  {% if request.resolver_match.url_name == 'menu'  %}class="active" aria-current="page"{% endif %}>Menu</a></li>
+        <li><a href="{% url 'cafe:about' %}" {% if request.resolver_match.url_name == 'about' %}class="active" aria-current="page"{% endif %}>About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>☕ Cloud Cafe PH</h3>
+        <p>A cozy corner where every cup is crafted with passion. Come for the coffee, stay for the vibe.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="{% url 'cafe:home' %}">Home</a></li>
+          <li><a href="{% url 'cafe:menu' %}">Menu</a></li>
+          <li><a href="{% url 'cafe:about' %}">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>📍 Philippines</li>
+          <li>📞 +63 900 000 0000</li>
+          <li>✉️ hello@cloudcafeph.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {% now "Y" %} Cloud Cafe PH. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

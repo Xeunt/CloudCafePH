@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud Cafe PH — Home{% endblock %}
+
+{% block content %}
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-content">
+      <span class="hero-badge">Now Open</span>
+      <h1 id="hero-heading">Your Cozy Cup<br><span>Awaits You</span></h1>
+      <p>Handcrafted coffee, freshly baked pastries, and a warm atmosphere — all in one place.</p>
+      <div class="hero-buttons">
+        <a href="{% url 'cafe:menu' %}" class="btn btn-primary">View Our Menu</a>
+        <a href="{% url 'cafe:about' %}" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section aria-labelledby="features-heading">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 id="features-heading">Why Cloud Cafe PH?</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p>We put care into every detail — from bean to cup.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🫘</div>
+          <h3>Premium Beans</h3>
+          <p>Sourced from the finest Philippine highlands and international farms.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">👨‍🍳</div>
+          <h3>Skilled Baristas</h3>
+          <p>Our team crafts each drink with precision and passion.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🌿</div>
+          <h3>Fresh Ingredients</h3>
+          <p>Daily-delivered ingredients ensuring every bite and sip is fresh.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🛋️</div>
+          <h3>Cozy Atmosphere</h3>
+          <p>A welcoming space perfect for work, study, or catching up with friends.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED ITEMS -->
+  <section class="bg-white" aria-labelledby="featured-heading">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 id="featured-heading">Customer Favorites</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p>Our most-loved drinks and bites, straight from the menu.</p>
+      </div>
+
+      {% if featured_items %}
+        <div class="menu-grid">
+          {% for item in featured_items %}
+            <article class="menu-card">
+              {% if item.image %}
+                <img class="menu-card-img" src="{{ item.image.url }}" alt="{{ item.name }}" />
+              {% else %}
+                <div class="menu-card-img-placeholder" aria-hidden="true">☕</div>
+              {% endif %}
+              <div class="menu-card-body">
+                <h3>{{ item.name }}</h3>
+                {% if item.description %}
+                  <p>{{ item.description }}</p>
+                {% endif %}
+                <span class="menu-card-price">₱{{ item.price }}</span>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-menu">
+          <div class="icon" aria-hidden="true">☕</div>
+          <h3>Menu coming soon!</h3>
+          <p>We're still preparing our delicious offerings. Check back shortly.</p>
+        </div>
+      {% endif %}
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="{% url 'cafe:menu' %}" class="btn btn-primary">See Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner" aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Come Visit Us Today</h2>
+    <p>We're open daily and ready to make your day a little better — one cup at a time.</p>
+    <a href="{% url 'cafe:about' %}" class="btn btn-outline">Find Us</a>
+  </section>
+
+{% endblock %}

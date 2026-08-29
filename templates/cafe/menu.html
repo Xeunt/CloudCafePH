@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Menu — Cloud Cafe PH{% endblock %}
+{% block meta_description %}Browse the full Cloud Cafe PH menu — coffees, drinks, pastries, and more.{% endblock %}
+
+{% block content %}
+
+  <!-- PAGE HEADER -->
+  <section class="about-hero" aria-labelledby="menu-heading">
+    <h1 id="menu-heading">Our Menu</h1>
+    <p>Everything we serve is made with love and the freshest ingredients.</p>
+  </section>
+
+  <!-- MENU ITEMS -->
+  <section class="menu-page" aria-label="Menu categories">
+    <div class="section-inner">
+
+      {% if categories %}
+        {% for category in categories %}
+          <div class="menu-category">
+            <h2 class="category-title">{{ category.name }}</h2>
+            <div class="menu-list" role="list">
+              {% for item in category.items.all %}
+                {% if item.is_available %}
+                  <article class="menu-item" role="listitem">
+                    {% if item.image %}
+                      <img class="menu-item-thumb" src="{{ item.image.url }}" alt="{{ item.name }}" />
+                    {% else %}
+                      <div class="menu-item-thumb-placeholder" aria-hidden="true">☕</div>
+                    {% endif %}
+                    <div class="menu-item-info">
+                      <h4>{{ item.name }}</h4>
+                      {% if item.description %}
+                        <p>{{ item.description }}</p>
+                      {% endif %}
+                      <span class="price-tag">₱{{ item.price }}</span>
+                    </div>
+                  </article>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-menu">
+          <div class="icon" aria-hidden="true">📋</div>
+          <h3>Menu coming soon!</h3>
+          <p>We're still building our menu. Please check back shortly or visit us in store.</p>
+        </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner" aria-labelledby="menu-cta-heading">
+    <h2 id="menu-cta-heading">Can't Decide?</h2>
+    <p>Visit us and our baristas will help you find the perfect drink.</p>
+    <a href="{% url 'cafe:about' %}" class="btn btn-outline">Get in Touch</a>
+  </section>
+
+{% endblock %}
