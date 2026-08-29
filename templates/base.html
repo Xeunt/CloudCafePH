@@ -60,5 +60,75 @@
     </div>
   </footer>
 
+  <!-- =====================================================
+       AI CHAT WIDGET
+       Talks to /chat/ (Django proxy → Lambda → Bedrock)
+       ===================================================== -->
+
+  <!-- Floating action button -->
+  <button
+    id="chat-fab"
+    class="chat-fab"
+    aria-label="Open AI assistant"
+    aria-expanded="false"
+    aria-controls="chat-panel"
+  >
+    <span aria-hidden="true">💬</span>
+    <span id="chat-fab-badge" class="chat-fab-badge" aria-hidden="true"></span>
+  </button>
+
+  <!-- Chat panel -->
+  <aside
+    id="chat-panel"
+    class="chat-panel"
+    role="dialog"
+    aria-label="Cloud Cafe PH AI Assistant"
+    aria-hidden="true"
+  >
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header-avatar" aria-hidden="true">☕</div>
+      <div class="chat-header-info">
+        <strong>Brew</strong>
+        <span>Cloud Cafe PH Assistant</span>
+      </div>
+      <button id="chat-close-btn" class="chat-close-btn" aria-label="Close chat">✕</button>
+    </div>
+
+    <!-- Messages -->
+    <div id="chat-messages" class="chat-messages" aria-live="polite" aria-atomic="false"></div>
+
+    <!-- Suggested questions (hidden after first use via JS) -->
+    <div id="chat-suggestions" class="chat-suggestions">
+      <p>Quick questions:</p>
+      <button class="chat-suggestion-btn">What drinks do you serve?</button>
+      <button class="chat-suggestion-btn">What are your opening hours?</button>
+      <button class="chat-suggestion-btn">Where are you located?</button>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-area">
+      <textarea
+        id="chat-input"
+        class="chat-input"
+        placeholder="Ask me anything…"
+        rows="1"
+        maxlength="500"
+        aria-label="Your message"
+      ></textarea>
+      <button id="chat-send-btn" class="chat-send-btn" aria-label="Send message">
+        <span aria-hidden="true">➤</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Pass the Django-resolved chat URL to JS without hardcoding it -->
+  <script>
+    const CHAT_URL = "{% url 'cafe:chat' %}";
+  </script>
+  <script src="{% static 'js/chat.js' %}"></script>
+
+  {% block extra_body %}{% endblock %}
+
 </body>
 </html>

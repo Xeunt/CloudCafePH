@@ -136,3 +136,13 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ------------------------------------------------------------------
+# ENTERPRISE AI AGENT
+# Set these in .env (local) or Railway env vars (production).
+# AI_AGENT_URL  — the API Gateway invoke URL ending with a slash
+#                 e.g. https://abc123.execute-api.ap-southeast-1.amazonaws.com/
+# AI_AGENT_API_KEY — the x-api-key value from `terraform output -raw api_key`
+# ------------------------------------------------------------------
+AI_AGENT_URL     = os.environ.get('AI_AGENT_URL', '')
+AI_AGENT_API_KEY = os.environ.get('AI_AGENT_API_KEY', '')
